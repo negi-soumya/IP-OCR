@@ -1,0 +1,10 @@
+import cv2
+import scipy.stats
+import skimage.feature
+
+a=['D100.jpg','D101.jpg','D102.jpg','D103.jpg','D104.jpg','D105.jpg','D106.jpg','D107.jpg','D108.jpg','D109.jpg']
+for i in range(10):
+	img=cv2.imread(a[i],0)
+	glcm = skimage.feature.greycomatrix(img,[1],[0])
+	con=skimage.feature.greycoprops(glcm, prop='correlation')
+	print('Correlation of',a[i],'with distance [1] and angle [0]',con)
